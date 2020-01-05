@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<?php include('../server.php') ?>
+<?php include("adminServer.php")?>
+<html lang="bg" class="">
+<head>
+	<?php include('../head.php') ?>
+</head>
+	<body>
+		<?php
+			include('../headers/adminHeader.php');
+		?>
+		<!-- start banner Area -->
+		<section class="banner-area relative about-banner" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Учителски права
+							</h1>
+							<a href="#">Задачи</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		<!-- End banner Area -->
+
+		<!-- Start feature Area -->
+		<section class="feature-area section-gap" id="viewAllAddedProblempedWebSite">
+			<div class="container">
+					<div class="panel panel-success row" >
+					  <div class="panel-heading">
+							Задачи
+						</div>
+					  <div class="panel-body col-lg-12 col-md-12">
+
+
+							<!--Търсене на задача:	<br><br>
+							<div class="row">
+								 <div class=" col-lg-5 col-md-5">
+									 <div class="form-group row">
+										 <label class="col-lg-5 col-md-5 control-label profilLabels">Търсене по име:</label>
+										 <div class="col-lg-7 col-md-7">
+											 <input type="text" class="form-control"  v-model="searchTaskTittle" value="" class="form-control" placeholder="Име на задачата">
+										 </div>
+									 </div>
+									 <div class="form-group row">
+										<label class="col-lg-5 col-md-5 control-label profilLabels">Дата от/до:</label>
+										<div class="col-lg-7 col-md-7">
+											<div class="form-group row">
+												<div class="col-lg-6 col-md-6">
+													<input type="date" class="form-control" v-model="dateFrom" class="form-control">
+												</div>
+												<div class="col-lg-6 col-md-6">
+													<input type="date" class="form-control" v-model="dateTo" class="form-control">
+												</div>
+											</div>
+										</div>
+									 </div>
+								 </div>
+
+								 <div class=" col-lg-2 col-md-2">
+
+								 </div>
+
+								 <div class=" col-lg-5 col-md-5">
+									 <div class="form-group row">
+										 <label class="col-lg-4 col-md-4">Подреди по:</label>
+										 <div class="col-lg-8 col-md-8">
+											 <div class="form-group row">
+												 <select class="col-lg-11 col-md-11" onchange="" id="sortSelect">
+  												 <option value="date">Дата на добавяне</option>
+  												 <option value="alphabetAZ">Азбучен ред	(А-Я)</option>
+													 <option value="alphabetZA">Азбучен ред	(Я-А)</option>
+  											 </select>
+											 </div>
+										 </div>
+									 </div>
+
+
+									 <div class="form-group row">
+										 <div class="col-lg-2 col-md-2">
+ 										</div>
+										<button type="button" class="col-lg-3 col-md-3 btn primary-btn" v-on:click="searchTask()">Търсене</button>
+										<div class="col-lg-2 col-md-2">
+										</div>
+										<button type="button" class="col-lg-3 col-md-3 btn primary-btn" v-on:click="cancel()">Анолиране</button>
+									</div>
+
+								 </div>
+							</div>-->
+
+               <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th>№</th>
+                     <th>Потребител</th>
+                     <th>Цел на актуалицация</th>
+                     <th>Дата от</th>
+                     <th>Дата до</th>
+										 <th>Редактирай</th>
+                   </tr>
+                 </thead>
+								 <tbody>
+									 <tr v-for="problem in problems">
+										 <td>
+											 {{problem.count}}
+										 </td>
+  									 <td>{{problem.user}}</td>
+  									 <td>{{problem.purpose}}</td>
+										 <td>{{problem.close_time}}</td>
+										 <td>{{problem.open_time}}</td>
+
+										 <td>
+											 <button type="button" name="button " class="btn primary-btn"  v-on:click="editTask(task)" data-toggle="modal" data-target="#addUpdateSiteMessage">
+												 <img src="../img/edit.png" alt="">
+											 </button>
+										 </td>
+									 </tr>
+                 </tbody>
+								 <tfoot>
+									 <tr>
+										 <td colspan="2">
+										 </td>
+										 <td colspan="3">
+											 <div class="btn-toolbar" role="toolbar" aria-label="...">
+												 Страници:
+												 <div v-for="page in pages">
+													 <button  class="btn primary-btn" v-on:click="changePage(page)">{{page.text}}</button>
+														<pre>	</pre>
+												 </div>
+											 </div>
+										 </td>
+										 <td colspan="2">
+										 </td>
+									</tr>
+									<tr>
+										<td	colspan="7">
+											 <button type="button" class="col-lg-12 col-md-12 btn primary-btn" data-toggle="modal" data-target="#addUpdateSiteMessage" v-on:click="newProblemFunction()">Добвавяне на нова задача</button>
+										 </td>
+									 </tr>
+
+								 </tfoot>
+               </table>
+							 <?php include('addUpdateSiteMessage.php');	?>
+					  </div>
+					</div>
+			</div>
+		</section>
+
+		<!-- End feature Area -->
+		<?php
+			include('../footer.php');
+			include('../scripts.php');
+			include('admin.js');
+			include('adminJS/updateSitePageJS.js');
+		?>
+	</body>
+</html>
